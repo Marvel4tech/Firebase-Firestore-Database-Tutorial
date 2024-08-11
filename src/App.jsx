@@ -4,8 +4,14 @@ import { collection, getDocs } from 'firebase/firestore'
 
 function App() {
   const [users, setUsers] = useState([])
+  const [newAge, setNewAge] = useState('')
+  const [newName, setNewName] = useState('')
 
   const usersCollection = collection(db, "users")
+
+  const handleCreateUser = async () => {
+
+  }
 
   useEffect(() => {
     const getUsers = async () => {
@@ -28,6 +34,15 @@ function App() {
           ))
         }
       </ul>
+      <div>
+        <form onSubmit={handleCreateUser} className=" space-y-2">
+          <input className=" border p-2 rounded-lg" type="text" placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
+          <input className=" border p-2 rounded-lg" type="number" placeholder="Enter age" on/>
+          <div>
+            <button className=" btn" type="submit">Create User</button>
+          </div>
+        </form>
+      </div>
    </main>
   )
 }
